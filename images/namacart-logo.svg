@@ -1,0 +1,30 @@
+<svg width="440" height="100" viewBox="0 0 440 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="45" fill="#1A3550" />
+  <path
+    d="M28 68 L28 30 L50 58 L50 30"
+    stroke="#FF6B2B"
+    stroke-width="5"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M54 46 L74 46 L71 60 L59 60 Z"
+    stroke="#FF6B2B"
+    stroke-width="2"
+    fill="none"
+  />
+  <circle cx="62" cy="65" r="4.5" fill="#FF6B2B" />
+  <circle cx="73" cy="65" r="4.5" fill="#FF6B2B" opacity="0.5" />
+  <circle cx="50" cy="28" r="3.2" fill="#13C47A" />
+  <text
+    x="115"
+    y="63"
+    font-family="Georgia, serif"
+    font-size="54"
+    font-weight="900"
+    fill="#0D1117"
+  >
+    Nama<tspan fill="#FF6B2B">Cart</tspan>
+  </text>
+</svg>
