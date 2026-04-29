@@ -1,0 +1,15 @@
+{
+  "name": "namacart-landing",
+  "version": "1.0.0",
+  "description": "NamaCart Landing Page with Serverless API",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "googleapis": "^171.4.0"
+  },
+  "devDependencies": {
+    "@ljharb/tsconfig": "^0.3.2"
+  }
+}
