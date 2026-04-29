@@ -1,12 +1,25 @@
-// api/register.js — Vercel Serverless Function
+// api/register.js — Netlify Function
 import { google } from 'googleapis';
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+export const handler = async (event, context) => {
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
   }
 
-  const { type, data, whatsappOptIn, timestamp } = req.body;
+  let body;
+  try {
+    body = JSON.parse(event.body);
+  } catch (err) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'Invalid JSON' })
+    };
+  }
+
+  const { type, data, whatsappOptIn, timestamp } = body;
 
   // Validate required fields by type
   const requiredFields = {
@@ -16,7 +29,10 @@ export default async function handler(req, res) {
 
   const missing = requiredFields[type]?.filter(f => !data[f]);
   if (missing?.length) {
-    return res.status(400).json({ error: 'Missing fields', missing });
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'Missing fields', missing })
+    };
   }
 
   try {
@@ -27,12 +43,18 @@ export default async function handler(req, res) {
       console.warn("Missing Google Sheets environment variables. Skipping sheet write.");
     }
 
-    res.status(200).json({ success: true, message: 'Registration saved' });
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ success: true, message: 'Registration saved' })
+    };
   } catch (error) {
     console.error("Failed to save to Google Sheets:", error);
-    res.status(500).json({ error: 'Failed to process registration' });
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Failed to process registration' })
+    };
   }
-}
+};
 
 async function appendToSheet(type, data, optIn, ts) {
   const auth = new google.auth.GoogleAuth({
