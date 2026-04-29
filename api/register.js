@@ -35,18 +35,31 @@ export default async function handler(req, res) {
 }
 
 async function appendToSheet(type, data, optIn, ts) {
-  const auth = new google.auth.GoogleAuth({
-    credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON),
-    scopes: ['https://www.googleapis.com/auth/spreadsheets']
-  });
-  const sheets = google.sheets({ version: 'v4', auth });
-  const SHEET_ID = process.env.GOOGLE_SHEET_ID;
-  const tabMap = { customer: 'Customers', vendor: 'Vendors' };
+  try {
+    const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+    
+    // Fix for private key newlines if they are escaped in the environment variable
+    if (credentials.private_key) {
+      credentials.private_key = credentials.private_key.replace(/\\n/g, '\n');
+    }
 
-  await sheets.spreadsheets.values.append({
-    spreadsheetId: SHEET_ID,
-    range: `${tabMap[type]}!A:Z`,
-    valueInputOption: 'RAW',
-    resource: { values: [[ts, type, ...Object.values(data), optIn]] }
-  });
+    const auth = new google.auth.GoogleAuth({
+      credentials,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets']
+    });
+
+    const sheets = google.sheets({ version: 'v4', auth });
+    const SHEET_ID = process.env.GOOGLE_SHEET_ID;
+    const tabMap = { customer: 'Customers', vendor: 'Vendors' };
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: SHEET_ID,
+      range: `${tabMap[type]}!A:Z`,
+      valueInputOption: 'RAW',
+      resource: { values: [[ts, type, ...Object.values(data), optIn]] }
+    });
+  } catch (err) {
+    console.error("appendToSheet Error Detail:", err.message);
+    throw err;
+  }
 }

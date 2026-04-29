@@ -51,11 +51,16 @@ async function submitForm(type, btnElement){
       body: JSON.stringify(entry)
     });
     
+    if (!res.ok) {
+      const errData = await res.json();
+      throw new Error(errData.error || 'Server error');
+    }
+    
     // Always persist to localStorage as fallback & for counters
     persistToLocalStorage(entry);
     updateCounters();
     
-    // Show success regardless of server failure, so user experience is uninterrupted
+    // Show success
     document.getElementById('form-body-'+type).style.display='none';
     document.getElementById('success-'+type).style.display='block';
     launchConfetti();
