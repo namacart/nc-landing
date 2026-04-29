@@ -4,8 +4,7 @@
   "description": "NamaCart Landing Page with Serverless API",
   "main": "index.html",
   "scripts": {
-    "dev": "netlify dev",
-    "build": "echo 'Static build - no-op'"
+    "dev": "vercel dev"
   },
   "dependencies": {
     "googleapis": "^171.4.0"
