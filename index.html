@@ -6,48 +6,101 @@
 <title>NamaCart — Your Neighborhood, Delivered</title>
 <meta name="description" content="NamaCart connects you with local kirana shops. Order online, support your neighborhood. Join the waitlist."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">Nama<em>Cart</em></a>
-    <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#why">Why NamaCart</a>
-      <a href="#for-vendors">For Vendors</a>
-      <a href="#register" class="nav-cta">Join Waitlist →</a>
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">
+        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M28 68 L28 30 L50 58 L50 30" stroke="#FF6B2B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M54 44 L74 44 L71 58 L59 58 Z" stroke="#FF6B2B" stroke-width="5" fill="none"/>
+          <circle cx="62" cy="64" r="5.5" fill="#FF6B2B"/>
+          <circle cx="73" cy="64" r="5.5" fill="#13C47A"/>
+        </svg>
+      </div>
+      <span class="logo-text">Nama<span>Cart</span></span>
+    </a>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="#how" onclick="closeMenu()">How it works</a>
+      <a href="#why" onclick="closeMenu()">Why NamaCart</a>
+      <a href="#vendor-benefits" onclick="closeMenu();switchTab('vendor')">For Vendors</a>
+      <a href="#register" class="nav-cta" onclick="closeMenu()">Join Waitlist →</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-grain"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow"><span></span> Launching in Bengaluru · Apr 29, 2026</div>
-    <h1 class="hero-title">Nama<em>Cart</em></h1>
-    <p class="hero-subtitle">Your neighborhood kirana shop, now online. Order local. Delivered in minutes.</p>
+    <div class="hero-badge">
+      <div class="pulse"></div>
+      Launching Soon · April 2026
+    </div>
+    <h1 class="hero-h1">
+      Your kirana shop,<br/><em>now at your door.</em>
+    </h1>
+    <p class="hero-sub">Order from your neighborhood shop in minutes. Support local. No dark stores, no warehouses — just the shop on your street, connected.</p>
+
     <div class="hero-langs">
       <span class="hero-lang active">నమా కార్ట్</span>
-      <span class="hero-lang-sep">·</span>
+      <span class="lang-dot">·</span>
       <span class="hero-lang">ನಮ್ಮ ಕಾರ್ಟ್</span>
-      <span class="hero-lang-sep">·</span>
+      <span class="lang-dot">·</span>
       <span class="hero-lang">நம கார்ட்</span>
-      <span class="hero-lang-sep">·</span>
+      <span class="lang-dot">·</span>
       <span class="hero-lang">NamaCart</span>
     </div>
 
-    <!-- TAB SELECTOR -->
+    <div class="hero-cta-group">
+      <button class="btn-primary" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+        Join the Waitlist →
+      </button>
+      <a href="#how" class="btn-secondary">How it works ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-val" id="counter-shops">12</div>
+      <div class="stat-lbl">Shops Joining</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val" id="counter-customers">47</div>
+      <div class="stat-lbl">Customers Registered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">₹0</div>
+      <div class="stat-lbl">Cost to Join</div>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRATION -->
+<section class="registration-section" id="register">
+  <div class="reg-wrapper">
+    <div class="eyebrow" style="display:block;text-align:center;">Get Early Access</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:12px;">Be first when we <em>launch.</em></h2>
+    <p class="section-sub" style="text-align:center;max-width:460px;margin:0 auto 40px;">Free for customers, free to list for shops. Zero spam. We notify you the moment NamaCart goes live in your area.</p>
+
     <div class="tab-selector">
-      <button class="tab-btn active" data-tab="customer" onclick="switchTab('customer')">👤 Customer</button>
-      <button class="tab-btn" data-tab="vendor" onclick="switchTab('vendor')">🏪 Shop Owner</button>
+      <button class="tab-btn active" data-tab="customer" onclick="switchTab('customer')">👤 I'm a Customer</button>
+      <button class="tab-btn" data-tab="vendor" onclick="switchTab('vendor')">🏪 I Own a Shop</button>
     </div>
 
-    <!-- REGISTRATION FORMS -->
     <div class="reg-form">
       <!-- CUSTOMER FORM -->
       <div class="form-panel active" id="panel-customer">
@@ -58,16 +111,16 @@
         </div>
         <div id="form-body-customer">
           <div class="form-title">Join as a Customer</div>
-          <div class="form-sub">Get early access. Order from your local kirana shop — delivered to you.</div>
+          <div class="form-sub">Get early access — order from your local kirana, delivered to your door.</div>
           <div class="form-row">
-            <div class="field"><label>Your Name</label><input type="text" placeholder="Priya Sharma" id="c-name"/></div>
-            <div class="field"><label>Phone</label><input type="tel" placeholder="+91 98765 43210" id="c-phone"/></div>
+            <div class="field"><label>Your Name</label><input type="text" placeholder="Full name" id="c-name"/></div>
+            <div class="field"><label>Phone / WhatsApp</label><input type="tel" placeholder="+91 98765 43210" id="c-phone"/></div>
           </div>
-          <div class="field"><label>Email</label><input type="email" placeholder="priya@example.com" id="c-email"/></div>
-          <div class="field"><label>Area / Locality</label><input type="text" placeholder="Koramangala, Bengaluru" id="c-area"/></div>
+          <div class="field"><label>Email</label><input type="email" placeholder="you@example.com" id="c-email"/></div>
+          <div class="field"><label>Area / Locality</label><input type="text" placeholder="Your neighborhood" id="c-area"/></div>
           <div class="field"><label>Primary Language</label>
             <select id="c-lang">
-              <option value="">Select language preference</option>
+              <option value="">Select your language</option>
               <option value="en">English</option>
               <option value="kn">ಕನ್ನಡ (Kannada)</option>
               <option value="te">తెలుగు (Telugu)</option>
@@ -83,7 +136,7 @@
             <span class="spinner"></span>
             <span class="btn-text">Get Early Access →</span>
           </button>
-          <div class="form-note">Free forever for customers. No spam. Unsubscribe anytime.</div>
+          <div class="form-note">Free forever for customers · No spam · Unsubscribe anytime</div>
         </div>
       </div>
 
@@ -92,32 +145,48 @@
         <div class="success-msg" id="success-vendor">
           <div class="success-icon">🏪</div>
           <div class="success-title">Your shop is registered!</div>
-          <div class="success-text">We'll contact you within 24 hours to set up your shop on NamaCart — completely free. You'll start getting online orders in less than a week.</div>
+          <div class="success-text">We'll reach out within 24 hours to help you get set up on NamaCart — completely free.</div>
         </div>
         <div id="form-body-vendor">
           <div class="form-title">List Your Shop</div>
-          <div class="form-sub">Join as a founding vendor. Free to list. Get online customers. T+1 payment.</div>
+          <div class="form-sub">Founding vendors get free listing, 0% commission for 3 months, and full setup support.</div>
+          <div class="vendor-perks">
+            <div class="vendor-perk"><span class="vp-icon">✓</span><span>Free to list. No monthly fee.</span></div>
+            <div class="vendor-perk"><span class="vp-icon">✓</span><span>0% commission for 3 months</span></div>
+            <div class="vendor-perk"><span class="vp-icon">✓</span><span>Next-day bank settlement (T+1)</span></div>
+          </div>
           <div class="form-row">
-            <div class="field"><label>Owner Name</label><input type="text" placeholder="Ravi Anna" id="v-name"/></div>
+            <div class="field"><label>Owner Name</label><input type="text" placeholder="Your name" id="v-name"/></div>
             <div class="field"><label>WhatsApp Number</label><input type="tel" placeholder="+91 98765 43210" id="v-phone"/></div>
           </div>
-          <div class="field"><label>Shop Name</label><input type="text" placeholder="Ravi General Stores" id="v-shopname"/></div>
+          <div class="field"><label>Shop Name</label><input type="text" placeholder="e.g. Sri Lakshmi Stores" id="v-shopname"/></div>
           <div class="field"><label>Shop Type</label>
             <select id="v-type">
-              <option value="">Select your shop type</option>
+              <option value="">What do you sell?</option>
               <option value="grocery">Grocery / Kirana</option>
               <option value="vegetables">Vegetables &amp; Fruits</option>
               <option value="dairy">Dairy &amp; Eggs</option>
               <option value="pharmacy">Medical / Pharmacy</option>
               <option value="bakery">Bakery &amp; Sweets</option>
               <option value="stationery">Stationery</option>
+              <option value="meat">Meat &amp; Seafood</option>
               <option value="other">Other</option>
             </select>
           </div>
-          <div class="field"><label>Shop Address / Area</label><input type="text" placeholder="15, 2nd Cross, Indiranagar, Bengaluru" id="v-address"/></div>
+          <div class="field"><label>Shop Area / Locality</label><input type="text" placeholder="Your shop's neighborhood" id="v-address"/></div>
+          <div class="field"><label>Preferred Language</label>
+            <select id="v-lang">
+              <option value="">Select your language</option>
+              <option value="en">English</option>
+              <option value="kn">ಕನ್ನಡ (Kannada)</option>
+              <option value="te">తెలుగు (Telugu)</option>
+              <option value="ta">தமிழ் (Tamil)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+          </div>
           <div class="field"><label>Average Daily Customers</label>
             <select id="v-customers">
-              <option value="">Approx. daily footfall</option>
+              <option value="">Approx. how many customers/day?</option>
               <option value="lt50">Less than 50</option>
               <option value="50-150">50–150 customers</option>
               <option value="150-300">150–300 customers</option>
@@ -126,41 +195,32 @@
           </div>
           <div class="notify-row">
             <input type="checkbox" class="notify-check" id="v-notify" checked/>
-            <label class="notify-label" for="v-notify">Call me on WhatsApp to help me set up my shop for free</label>
+            <label class="notify-label" for="v-notify">WhatsApp me to help set up my shop for free</label>
           </div>
           <button class="submit-btn vendor" onclick="submitForm('vendor', this)">
             <span class="spinner"></span>
-            <span class="btn-text">List My Shop Free →</span>
+            <span class="btn-text">List My Shop — It's Free →</span>
           </button>
-          <div class="form-note">Zero upfront cost. No monthly fee for founding vendors. Earn more from your existing shop.</div>
+          <div class="form-note">Zero upfront cost · Full onboarding support · We call you</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat-item"><div class="stat-val" id="counter-shops">0</div><div class="stat-lbl">Shops Joining</div></div>
-    <div class="stat-item"><div class="stat-val" id="counter-customers">0</div><div class="stat-lbl">Customers Registered</div></div>
-    <div class="stat-item"><div class="stat-val">₹0</div><div class="stat-lbl">Cost to Join</div></div>
-  </div>
-</div>
-
-<!-- WHO IS NAMACART FOR -->
-<section id="for-vendors">
+<!-- WHO IT'S FOR -->
+<section id="for-vendors" class="for-section">
   <div class="section-inner">
     <div class="eyebrow">Built for Bharat</div>
     <h2 class="section-title">One platform.<br/><em>Your community.</em></h2>
-    <p class="section-sub">NamaCart works for everyone in your neighborhood ecosystem — the shopper and the shop owner.</p>
+    <p class="section-sub">NamaCart works for everyone in your neighborhood — the shopper and the shop owner.</p>
     <div class="user-grid">
       <div class="user-card customer reveal">
-        <div class="user-card-icon">👤</div>
+        <div class="user-card-icon">🛍️</div>
         <div class="user-card-title">Customers</div>
         <div class="user-card-sub">For Neighborhood Shoppers</div>
         <ul>
-          <li>Browse shops within 2 km</li>
+          <li>Browse shops within 2 km of you</li>
           <li>Order via app or WhatsApp</li>
           <li>Pay UPI or Cash on Delivery</li>
           <li>Real-time order tracking</li>
@@ -168,29 +228,29 @@
           <li>"Your regular shop" memory</li>
           <li>Same-day delivery, 30–60 min</li>
         </ul>
-        <button class="user-card-cta" onclick="switchTab('customer');scrollTo({top:0,behavior:'smooth'})">Register as Customer →</button>
+        <button class="user-card-cta" onclick="switchTab('customer');document.getElementById('register').scrollIntoView({behavior:'smooth'})">Register as Customer →</button>
       </div>
       <div class="user-card vendor reveal">
         <div class="user-card-icon">🏪</div>
         <div class="user-card-title">Shop Owners</div>
-        <div class="user-card-sub">For Kirana & Local Shops</div>
+        <div class="user-card-sub">For Kirana &amp; Local Shops</div>
         <ul>
-          <li>WhatsApp bot onboarding (10 min)</li>
-          <li>Manage inventory via dashboard</li>
-          <li>Instant order notifications</li>
-          <li>T+1 payment settlement</li>
-          <li>Free analytics dashboard</li>
-          <li>No app install required (V0)</li>
-          <li>SMS fallback for any phone</li>
+          <li>Get listed online in under 10 minutes</li>
+          <li>Receive orders via WhatsApp — no app needed</li>
+          <li>Manage stock with a simple dashboard</li>
+          <li>Accept UPI, cash, and card payments</li>
+          <li>T+1 daily payment to your bank account</li>
+          <li>UI in your language — Telugu, Kannada, Tamil</li>
+          <li>Dedicated onboarding support team</li>
         </ul>
-        <button class="user-card-cta" onclick="switchTab('vendor');scrollTo({top:0,behavior:'smooth'})">List My Shop Free →</button>
+        <button class="user-card-cta" onclick="switchTab('vendor');document.getElementById('register').scrollIntoView({behavior:'smooth'})">List My Shop Free →</button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="how" style="background:#fff;">
+<section id="how" class="how-section">
   <div class="section-inner">
     <div class="eyebrow">Simple by design</div>
     <h2 class="section-title">From order to doorstep<br/>in <em>under an hour.</em></h2>
@@ -199,134 +259,171 @@
       <div class="step reveal">
         <div class="step-num">01</div>
         <div class="step-title">Browse nearby shops</div>
-        <div class="step-desc">Open NamaCart and see kirana shops within 2 km. Real products, real prices, real stock — updated by the shop owner.</div>
+        <div class="step-desc">Open NamaCart and see kirana shops within 2 km. Real products, real prices, real stock — updated live by the shop owner.</div>
       </div>
       <div class="step reveal">
         <div class="step-num">02</div>
-        <div class="step-title">Order & pay in 2 minutes</div>
-        <div class="step-desc">Add items to cart, choose UPI or cash on delivery, and confirm. The shop gets an instant WhatsApp notification.</div>
+        <div class="step-title">Order &amp; pay in 2 minutes</div>
+        <div class="step-desc">Add items to cart, choose UPI or cash on delivery, and confirm. The shop gets an instant notification.</div>
       </div>
       <div class="step reveal">
         <div class="step-num">03</div>
         <div class="step-title">Delivered to your door</div>
-        <div class="step-desc">A local delivery agent picks up your order and brings it to you. Track in real time. No guessing, no waiting.</div>
+        <div class="step-desc">A local delivery agent picks up your order. Track in real time. No guessing, no waiting.</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WHY NAMACART -->
-<section id="why">
+<section id="why" class="why-section">
   <div class="section-inner">
     <div class="why-grid">
       <div class="reveal">
         <div class="eyebrow">Our difference</div>
-        <h2 class="section-title">Built for the <em>90% Blinkit can't reach.</em></h2>
-        <p style="font-size:15px;color:var(--body);margin-bottom:8px;line-height:1.7;">Blinkit and Zepto need dark stores worth ₹30–80L each. NamaCart uses the 12 lakh kirana shops that already exist — and turns every one into a fulfillment center.</p>
-        <p style="font-size:15px;color:var(--body);margin-bottom:28px;line-height:1.7;">No warehouses. No cold chains. Just technology connecting the neighborhood that already works.</p>
+        <h2 class="section-title">Hyperlocal commerce,<br/><em>built differently.</em></h2>
+        <p>Quick commerce platforms need expensive dark stores. NamaCart uses the millions of kirana shops that already exist — and turns every one into a fulfillment center.</p>
+        <p>No warehouses. No cold chains. Just technology connecting the neighborhood that already works.</p>
         <ul class="why-list">
           <li>
-            <div class="why-icon" style="background:var(--green3);">🌿</div>
+            <div class="why-icon">🌿</div>
             <div>
               <div class="why-item-title">Zero infrastructure cost</div>
-              <div class="why-item-desc">Shops already exist. We just make them orderable. No capex. No dark stores.</div>
+              <div class="why-item-desc">Shops already exist. We make them orderable — no capex, no dark stores required.</div>
             </div>
           </li>
           <li>
-            <div class="why-icon" style="background:var(--navy3);">🗣️</div>
+            <div class="why-icon">🗣️</div>
             <div>
               <div class="why-item-title">Your language, your app</div>
               <div class="why-item-desc">Telugu, Kannada, Tamil UI built in. Vernacular trust is cultural, not technical.</div>
             </div>
           </li>
           <li>
-            <div class="why-icon" style="background:var(--orange3);">💛</div>
+            <div class="why-icon">💛</div>
             <div>
               <div class="why-item-title">"Your regular shop" memory</div>
               <div class="why-item-desc">NamaCart remembers your favorite shops. Your shop appears first. Every time.</div>
             </div>
           </li>
           <li>
-            <div class="why-icon" style="background:var(--teal3);">🔒</div>
+            <div class="why-icon">🔒</div>
             <div>
               <div class="why-item-title">ONDC-connected</div>
-              <div class="why-item-desc">Built on India's open commerce network. Your data is yours. Always.</div>
+              <div class="why-item-desc">Built on India's open commerce network. Your data stays yours. Always.</div>
             </div>
           </li>
         </ul>
       </div>
-      <div class="why-visual reveal">
-        <div style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--mint);text-transform:uppercase;margin-bottom:20px;">NamaCart vs. Quick Commerce</div>
-        <div class="why-kpi">
-          <div class="kpi-card"><div class="kpi-val">₹0</div><div class="kpi-lbl">Dark store cost</div></div>
+      <div class="reveal">
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="kpi-val">₹0</div><div class="kpi-lbl">Cost to list</div></div>
           <div class="kpi-card"><div class="kpi-val">10 min</div><div class="kpi-lbl">Shop onboarding</div></div>
           <div class="kpi-card"><div class="kpi-val">1–3 km</div><div class="kpi-lbl">Hyperlocal radius</div></div>
           <div class="kpi-card"><div class="kpi-val">T+1</div><div class="kpi-lbl">Vendor payout</div></div>
         </div>
-        <div style="margin-top:24px;padding:20px;background:rgba(103,211,160,.08);border:1px solid rgba(103,211,160,.2);border-radius:10px;position:relative;z-index:1;">
-          <div style="font-size:11px;font-weight:700;color:var(--mint);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">The NamaCart Thesis</div>
-          <div style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.7;font-style:italic;">"Every local shop is already a fulfillment center. NamaCart makes it discoverable, orderable, and deliverable — without building a single warehouse."</div>
+        <div class="thesis-block">
+          <div class="thesis-label">The NamaCart Thesis</div>
+          <div class="thesis-text">"Every local shop is already a fulfillment center. NamaCart makes it discoverable, orderable, and deliverable — without building a single warehouse."</div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;position:relative;z-index:1;">
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:12px;text-align:center;">
-            <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#fff;">12 Cr</div>
-            <div style="font-size:9.5px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Kirana shops in India</div>
-          </div>
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:12px;text-align:center;">
-            <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#fff;">500</div>
-            <div style="font-size:9.5px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Orders/day = Breakeven</div>
-          </div>
+        <div class="kpi-grid" style="margin-top:14px;margin-bottom:0;">
+          <div class="kpi-card"><div class="kpi-val" style="font-size:24px;">12 Cr+</div><div class="kpi-lbl">Kirana shops in India</div></div>
+          <div class="kpi-card"><div class="kpi-val" style="font-size:24px;">500</div><div class="kpi-lbl">Orders/day = breakeven</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL PROOF / TESTIMONIALS -->
+<!-- VENDOR BENEFITS -->
+<section class="vendor-strip" id="vendor-benefits">
+  <div class="section-inner">
+    <div class="eyebrow" style="text-align:center;">For Shop Owners</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:12px;">More customers.<br/><em>Same shop.</em></h2>
+    <p class="section-sub" style="text-align:center;max-width:480px;margin:0 auto 56px;">Everything you need to take your shop online — without any tech headache.</p>
+    <div class="vbenefit-grid">
+      <div class="vbenefit reveal">
+        <div class="vb-icon">📱</div>
+        <div class="vb-title">No App Needed to Start</div>
+        <div class="vb-desc">Receive and manage orders directly through WhatsApp. No smartphone upgrade required.</div>
+      </div>
+      <div class="vbenefit reveal">
+        <div class="vb-icon">💰</div>
+        <div class="vb-title">Zero Commission — 3 Months</div>
+        <div class="vb-desc">Founding vendors keep 100% of revenue for the first 3 months. Lowest platform fee after that.</div>
+      </div>
+      <div class="vbenefit reveal">
+        <div class="vb-icon">🏦</div>
+        <div class="vb-title">Daily Payouts to Your Account</div>
+        <div class="vb-desc">Every order you fulfill settles to your bank account the very next day. No weekly delays.</div>
+      </div>
+      <div class="vbenefit reveal">
+        <div class="vb-icon">📊</div>
+        <div class="vb-title">Simple Inventory Dashboard</div>
+        <div class="vb-desc">Update prices and stock from a phone-friendly dashboard in your language, with SMS fallback.</div>
+      </div>
+      <div class="vbenefit reveal">
+        <div class="vb-icon">🤝</div>
+        <div class="vb-title">We Come to You</div>
+        <div class="vb-desc">Our team visits your shop, sets everything up, and trains you in person. Free of charge.</div>
+      </div>
+      <div class="vbenefit reveal">
+        <div class="vb-icon">📍</div>
+        <div class="vb-title">Get Found by Neighbors</div>
+        <div class="vb-desc">Appear on the map to every customer within 2 km. Your regulars can now order from home too.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <button class="btn-primary" onclick="switchTab('vendor');document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+        List My Shop Free — Join the Waitlist →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="section-inner">
     <div class="eyebrow">Early feedback</div>
-    <h2 class="section-title">What the neighborhood is saying.</h2>
+    <h2 class="section-title">What the neighborhood<br/>is <em>saying.</em></h2>
     <div class="testi-grid">
       <div class="testi-card reveal">
         <div class="testi-stars">★★★★★</div>
         <div class="testi-text">"I have been running this shop for 22 years. When they showed me NamaCart, I thought it was too complicated. Then I got my first online order in 10 minutes. Now I want all my regular customers to use it."</div>
         <div class="testi-author">Ramesh Anna</div>
-        <div class="testi-role">Ramesh General Stores, Koramangala · Founding Vendor</div>
+        <div class="testi-role">General Stores Owner · Founding Vendor</div>
       </div>
       <div class="testi-card reveal">
         <div class="testi-stars">★★★★★</div>
         <div class="testi-text">"I live on the 4th floor and the vegetable shop downstairs never delivered. Now I can order on WhatsApp and get it in 20 minutes. The app is in Kannada which my mother-in-law can also use."</div>
         <div class="testi-author">Kavitha R.</div>
-        <div class="testi-role">Resident, HSR Layout · Early Customer</div>
+        <div class="testi-role">Apartment Resident · Early Customer</div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:40px;">
-      <div style="font-size:12px;color:rgba(255,255,255,.3);font-style:italic;">* Testimonials from our beta testing and research conversations. Names changed for privacy.</div>
-    </div>
+    <p class="testi-disclaimer">* From beta testing and research conversations. Names changed for privacy.</p>
   </div>
 </section>
 
 <!-- TIMELINE -->
-<section class="timeline" id="timeline">
+<section class="timeline-section" id="timeline">
   <div class="section-inner">
     <div class="eyebrow">Our journey</div>
     <h2 class="section-title">From <em>launch</em> to scale.</h2>
-    <p class="section-sub">Here's our roadmap. We build in public. Every milestone shared honestly.</p>
+    <p class="section-sub">We build in public. Every milestone shared honestly.</p>
     <div class="timeline-list">
       <div class="tl-item reveal">
         <div class="tl-dot tl-b">🚀</div>
         <div>
-          <span class="tl-badge b">Apr 29, 2026 · TODAY</span>
+          <span class="tl-badge b">Apr 29, 2026 · Today</span>
           <div class="tl-title">Landing page live · Registrations open</div>
-          <div class="tl-desc">First 100 customers and vendors join the waitlist. Social launch on Instagram, LinkedIn, and WhatsApp communities.</div>
+          <div class="tl-desc">First 100 customers and vendors join the waitlist. Social launch across Instagram, LinkedIn, and WhatsApp communities.</div>
         </div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-dot tl-g">V0</div>
         <div>
           <span class="tl-badge g">May–Jun 2026</span>
-          <div class="tl-title">V0 Launch — First 5 shops live in Bengaluru</div>
+          <div class="tl-title">V0 Launch — First 5 shops go live</div>
           <div class="tl-desc">Real orders. Real money. WhatsApp-first vendor onboarding. Customers browse, order, pay. We deliver and learn.</div>
         </div>
       </div>
@@ -334,43 +431,16 @@
         <div class="tl-dot tl-g">V1</div>
         <div>
           <span class="tl-badge g">Jul–Oct 2026</span>
-          <div class="tl-title">V1 App — 20 shops, React Native, Telugu + Kannada</div>
-          <div class="tl-desc">Full customer and vendor apps on Play Store. Vernacular UI. GPS delivery tracking. 50+ daily orders.</div>
+          <div class="tl-title">V1 App — 20 shops, React Native, vernacular UI</div>
+          <div class="tl-desc">Full customer and vendor apps on Play Store. GPS delivery tracking. 50+ daily orders.</div>
         </div>
       </div>
       <div class="tl-item reveal">
         <div class="tl-dot tl-o">📈</div>
         <div>
-          <span class="tl-badge o">Nov 2026–Apr 2027</span>
-          <div class="tl-title">Scale — 500 daily orders · Bengaluru breakeven</div>
-          <div class="tl-desc">ONDC integration. 50+ shops. Repeat order rate > 40%. Unit economics proven. City 2 pilot.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REGISTER CTA SECTION -->
-<section class="register-section" id="register">
-  <div class="register-inner">
-    <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
-      <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);margin-bottom:12px;">Join the movement</div>
-        <div style="font-family:'Fraunces',serif;font-size:36px;font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px;">Be part of Day 1.<br/>Your neighborhood<br/><em style="color:var(--mint);">needs this.</em></div>
-        <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:24px;">Join as a customer or list your shop for free. No cost. No catch. Just a better neighborhood.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;">
-          <span style="background:rgba(103,211,160,.12);border:1px solid rgba(103,211,160,.25);color:var(--mint);font-size:11px;font-weight:600;padding:5px 12px;border-radius:4px;">✓ Free for founding vendors</span>
-          <span style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-size:11px;font-weight:600;padding:5px 12px;border-radius:4px;">✓ Telugu · Kannada · Tamil</span>
-        </div>
-      </div>
-      <div>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <button onclick="scrollToHero('customer')" style="background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border:none;border-radius:10px;padding:16px 24px;font-family:'Fraunces',serif;font-size:16px;font-weight:700;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;transition:transform .2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-            <span>👤 Join as Customer</span><span>→</span>
-          </button>
-          <button onclick="scrollToHero('vendor')" style="background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;border:none;border-radius:10px;padding:16px 24px;font-family:'Fraunces',serif;font-size:16px;font-weight:700;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;transition:transform .2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-            <span>🏪 List My Shop (Free)</span><span>→</span>
-          </button>
+          <span class="tl-badge o">Nov 2026 onwards</span>
+          <div class="tl-title">Scale — 500 daily orders · ONDC integration</div>
+          <div class="tl-desc">50+ shops. Repeat order rate &gt;40%. Unit economics proven. Multi-city expansion begins.</div>
         </div>
       </div>
     </div>
@@ -381,8 +451,8 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">Nama<em>Cart</em></div>
-      <div class="footer-copy">Your Neighborhood, Delivered · Bengaluru → South India → All India</div>
+      <div class="footer-wordmark">Nama<span>Cart</span></div>
+      <div class="footer-copy">Your Neighborhood, Delivered · South India → All India</div>
     </div>
     <div>
       <div class="footer-links">
@@ -391,10 +461,11 @@
         <a href="mailto:hello@namacart.in">hello@namacart.in</a>
         <a href="#">Privacy</a>
       </div>
-      <div style="font-size:11px;color:rgba(255,255,255,.2);margin-top:6px;text-align:right;">namacart.in · April 2026 · Built with love in Bengaluru 🌿</div>
+      <div class="footer-meta">namacart.in · April 2026 · Built with love in India 🌿</div>
     </div>
   </div>
 </footer>
+
 
 <script src="script.js"></script>
 </body>
